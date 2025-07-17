@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post - Blog yourself</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                Blog yourself
+            </h1>
+            <nav class="nav">
+                <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+                <button class="btn btn-secondary" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="create-post-container">
+                <div class="create-post-header">
+                    <h2>
+                        <i class="fas fa-pen"></i>
+                        Create New Post
+                    </h2>
+                    <p>Share your thoughts with the world</p>
+                </div>
+
+                <form class="create-post-form" id="createPostForm">
+                    <div class="form-group">
+                        <label for="title">
+                            <i class="fas fa-heading"></i>
+                            Post Title
+                        </label>
+                        <input type="text" id="title" name="title" placeholder="Enter an engaging title..." required>
+                        <span class="error-message" id="titleError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">
+                            <i class="fas fa-align-left"></i>
+                            Post Content
+                        </label>
+                        <textarea id="content" name="content" rows="15" placeholder="Write your post content here..." required></textarea>
+                        <span class="error-message" id="contentError"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Publish Post
+                        </button>
+                    </div>
+
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>by dikshant neupane</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="auth.js"></script>
+    <script src="blog.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isAuthenticated()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            document.getElementById('createPostForm').addEventListener('submit', handleCreatePost);
+        });
+    </script>
+</body>
+</html>
+<!-- finnisehd -->

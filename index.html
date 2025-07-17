@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog yourself - Professional Blogging Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                Blog yourself
+            </h1>
+            <nav class="nav">
+                <div class="nav-user" id="navUser" style="display: none;">
+                    <span class="welcome-text">Welcome, <span id="currentUser"></span>!</span>
+                    <button class="btn btn-primary" onclick="window.location.href='create-post.html'">
+                        <i class="fas fa-plus"></i> New Post
+                    </button>
+                    <button class="btn btn-secondary" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                <div class="nav-guest" id="navGuest">
+                    <button class="btn btn-primary" onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.location.href='signup.html'">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h2>Welcome to Blog yourself</h2>
+                <p>A professional platform for writers, creators, and thought leaders to share their ideas with the world</p>
+            </div>
+
+            <div class="blog-feed">
+                <div class="feed-header">
+                    <h3>Latest Posts</h3>
+                    <div class="feed-controls">
+                        <div class="feed-stats" id="feedStats">
+                            <span class="post-count">0 posts</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="loadBlogPosts()">
+                            <i class="fas fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="posts-container" id="postsContainer">
+                    <div class="loading" id="loadingIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> Loading posts...
+                    </div>
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <h3>No posts yet</h3>
+                        <p>Be the first to share your thoughts and ideas with the Blog yourself community!</p>
+                        <button class="btn btn-primary" onclick="window.location.href='create-post.html'">
+                            <i class="fas fa-plus"></i> Create Your First Post
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>By Dikshant Neupane</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="auth.js"></script>
+    <script src="blog.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavigation();
+            loadBlogPosts();
+        });
+    </script>
+</body>
+</html>
+<!-- finished -->
